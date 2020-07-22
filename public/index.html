@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mars Hackers</title>
+    <link rel="icon" href="icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles/magic.min.css" />
+
+    <script
+      src="https://kit.fontawesome.com/d1f3dd87b7.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-sm fixed-top navbar-light"
+      style="background-color: rgb(100, 18, 12); height: 60px;"
+      id="myNavbar"
+    >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown" id="algorithms">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: white;"
+            >
+              Algorithms
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">A*</a>
+              <a class="dropdown-item" href="#">Bidirectional A*</a>
+              <a class="dropdown-item" href="#">IDA*</a>
+              <a class="dropdown-item" href="#">Dijkstra</a>
+              <a class="dropdown-item" href="#">Bidirectional Dijkstra</a>
+              <a class="dropdown-item" href="#">Greedy Best-First Search</a>
+              <a class="dropdown-item" href="#"
+                >Bidirectional Best First Search</a
+              >
+              <a class="dropdown-item" href="#">Breadth-First Search (BFS)</a>
+              <a class="dropdown-item" href="#"
+                >Bidirectional Breadth First Search</a
+              >
+              <a class="dropdown-item" href="#">Depth-First Search (DFS)</a>
+              <a class="dropdown-item" href="#">Trace</a>
+              <a class="dropdown-item" href="#">Jump Point Search</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" id="mazes">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: white;"
+            >
+              Mazes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Random</a>
+              <a class="dropdown-item" href="#">Recursive Division</a>
+              <a class="dropdown-item" href="#"
+                >Recursive Division (Vertical Skew)</a
+              >
+              <a class="dropdown-item" href="#"
+                >Recursive Division (Horizontal Skew)</a
+              >
+              <a class="dropdown-item" href="#">Simple Spiral</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" id="heuristics">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: white;"
+            >
+              Heuristic
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#"></a>
+              <a class="dropdown-item" href="#">Manhattan</a>
+              <a class="dropdown-item" href="#">Euclidean</a>
+              <a class="dropdown-item" href="#">Octile</a>
+              <a class="dropdown-item" href="#">Chebyshev</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown" id="speed">
+            <a
+              class="nav-link dropdown-toggle speedDisplay"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style="color: white;"
+            >
+              Speed: Fast
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Slow</a>
+              <a class="dropdown-item" href="#">Normal</a>
+              <a class="dropdown-item" href="#">Fast</a>
+            </div>
+          </li>
+          <li>
+            <div id="weight_option">
+              <input class="spinner" name="weight" value="1" type="number" />
+              <label class="option_label">Weight</label>
+            </div>
+          </li>
+
+          <li>
+            <div id="diagonal">
+              <input type="checkbox" class="allow_diagonal" checked />
+              <label class="option_label">Allow Diagonal</label>
+            </div>
+          </li>
+          <li>
+            <div id="corners">
+              <input type="checkbox" class="dont_cross" checked />
+              <label class="option_label">Don't cross corners</label>
+            </div>
+          </li>
+        </ul>
+
+        <button
+          class="btn btn-outline-success btn-space"
+          type="submit"
+          id="startBtn"
+        >
+          Start
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-info btn-space"
+          type="submit"
+          id="clearBtn"
+        >
+          Clear Walls
+        </button>
+      </div>
+    </nav>
+
+    <div id="instructions_panel" class="panel">
+      <header>
+        <h2 class="header_title">Instructions</h2>
+        <span id="hide_instructions">Hide</span>
+      </header>
+      Click within the grid and drag your mouse to draw obstacles. <br />
+      Drag the start node to set the start position.
+      <br />
+      Drag the end nodes to set the end position. <br />
+      Choose an algorithm from the navigation bar. <br />
+      Choose a maze from the navigation bar. <br />
+      Click Start in the upper-right corner to start the animation.
+      <div class="d-flex flex-row flex-wrap m-2 justify-content-around">
+        <div class="d-flex p-2">
+          <div class="key wall"></div>
+          <div>Wall</div>
+        </div>
+        <div class="d-flex p-2">
+          <div class="key start"></div>
+          <div>Start</div>
+        </div>
+        <div class="d-flex p-2">
+          <div class="key end"></div>
+          <div>Target</div>
+        </div>
+        <div class="d-flex p-2">
+          <div class="key searching"></div>
+          <div class="key visited"></div>
+          <div>Visited</div>
+        </div>
+        <div class="d-flex p-2">
+          <div class="key success"></div>
+          <div>Shortest-Path</div>
+        </div>
+        <div class="d-flex p-2">
+          <div class="key"></div>
+          <div>Unvisited</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column align-items-center" id="bigTableContainer">
+      <div id="tableContainer"></div>
+    </div>
+
+    <div class="d-flex flex-column" id="results">
+      <div class="d-flex justify-content-center">
+        <i id="resultsIcon" class="fas fa-exclamation"></i>
+      </div>
+      <div id="duration" class="d-flex justify-content-center">
+        Please select an algorithm and press start.
+      </div>
+      <div id="length" class="d-flex justify-content-center"></div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+</html>
