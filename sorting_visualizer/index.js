@@ -6,6 +6,7 @@ function disSortingBtn() {
   document.querySelector(".mergeSort").disabled = true;
   document.querySelector(".selectionSort").disabled = true;
   document.querySelector(".heapSort").disabled = true;
+  document.querySelector(".quickSort").disabled = true;
 }
 //disable size slider
 function disSizeSlider() {
@@ -29,6 +30,7 @@ function enSortingBtn() {
   document.querySelector(".mergeSort").disabled = false;
   document.querySelector(".selectionSort").disabled = false;
   document.querySelector(".heapSort").disabled = false;
+  document.querySelector(".quickSort").disabled = false;
 }
 
 //enable size slider

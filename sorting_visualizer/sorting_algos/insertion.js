@@ -18,7 +18,6 @@ async function insertion(){
   const array = document.querySelectorAll(".bar");
   //first loop
   for(let i=1;i<array.length;i++){
-
     let j=i-1;
     //value which is to be compared with others
     let key=array[i].style.height;
